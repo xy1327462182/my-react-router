@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom'
+import { HashRouter as Router, Route } from './react-router-dom'
 
 function Home() {
   return (
@@ -20,8 +20,7 @@ function About() {
 function User(props) {
   return (
     <div className="User">
-      User id is {props.match.params.id}
-      User id is {id}
+      User
     </div>
   )
 }
@@ -34,10 +33,10 @@ function UserProfile() {
   )
 }
 
-function NotFount() {
+function NotFound() {
   return (
-    <div className="NotFount">
-      NotFount
+    <div className="NotFound">
+      NotFound
     </div>
   )
 }
@@ -50,13 +49,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/home" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/user/profile" component={UserProfile} />
-            <Route path="/user/:id" component={User} />
-            <Route path="/notfount" component={NotFount} />
-            <Redirect to="/notfount" />
+          <Route />
         </Router>
       </div>
     )
