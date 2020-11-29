@@ -9,7 +9,7 @@ class HashRouter extends Component {
       //使用slice是为了去掉 #
       location: {
         //记录当前页面的pathname
-        pathname: window.location.pathname.slice(1) || '/'
+        pathname: window.location.hash.slice(1) || '/'
       }
     }
   }
@@ -20,14 +20,19 @@ class HashRouter extends Component {
     window.onhashchange = () => {
       this.setState({
         location: {
-          pathname: window.location.pathname.slice(1)
+          pathname: window.location.hash.slice(1)
         }
       })
     }
   }
   render() {
     const value = {
-      location: this.state.location
+      location: this.state.location,
+      history: {
+        push(to){
+          window.location.hash = to
+        }
+      }
     }
     //Provider提供数据  value就是传递出去的数据
     return (<Provider value={value}>{this.props.children}</Provider>)
